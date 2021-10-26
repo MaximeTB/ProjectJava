@@ -1,5 +1,3 @@
-package com.company;
-
 public class Camera {
     private int x;
     private int y;
