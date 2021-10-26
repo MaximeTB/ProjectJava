@@ -15,7 +15,7 @@ public class Main extends Application {
         Group root =new Group();
         GameScene theScene = new GameScene(root);
         primaryStage.setScene(theScene);
-//bite
+//bitex2
         primaryStage.show();
     }
 
