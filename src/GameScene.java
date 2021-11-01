@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
-    private staticThing bckgrndLeft,bckgrndRight ;
+    private staticThing bckgrndLeft,bckgrndRight,heart;
 
     public GameScene(Group parent) {
         super(parent,800,400);
@@ -19,6 +19,10 @@ public class GameScene extends Scene {
         bckgrndRight.getImage().setY(bckgrndRight.getY());
         parent.getChildren().add(bckgrndRight.getImage());
 
+        heart= new Heart(10,10);
+        heart.getImage().setX(heart.getX());
+        heart.getImage().setY(heart.getY());
+        parent.getChildren().add(heart.getImage());
 
         hero = new Hero();
         parent.getChildren().add(hero.getSprite());

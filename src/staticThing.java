@@ -11,7 +11,7 @@ public class staticThing {
         this.x=x;
         this.y=y;
         this.cx1=cx1;
-        this.cy2=cy2;
+        this.cy1=cy1;
         this.cx2=cx2;
         this.cy2=cy2;
         image = new ImageView(new Image(fileName));
