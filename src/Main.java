@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start (Stage primaryStage) throws Exception{
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Runner");
         Group root =new Group();
         GameScene theScene = new GameScene(root);
         primaryStage.setScene(theScene);
