@@ -6,11 +6,13 @@ public abstract class animatedThings {
     int px,py;
     protected ImageView sprite;
 
-    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int W, int L ){
+    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int W, int L,int att){
         px=x;
         py=y;
         sprite=new ImageView(new Image(fileName));
         sprite.setViewport(new Rectangle2D(cropX,cropY,W,L));
 
     }
+
+    public ImageView getSprite() {return sprite;}
 }
