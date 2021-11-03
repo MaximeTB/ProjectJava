@@ -12,8 +12,9 @@ public class Main extends Application {
     public void start (Stage primaryStage) throws Exception{
 
         primaryStage.setTitle("Runner");
-        Group root =new Group();
-        GameScene theScene = new GameScene(root);
+        Group parent =new Group();
+        Pane pane= new Pane(parent);
+        GameScene theScene = new GameScene(pane,800,400);
         primaryStage.setScene(theScene);
 
         primaryStage.show();
