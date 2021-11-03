@@ -12,7 +12,7 @@ public class GameScene extends Scene {
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
         numberOfLives=3;
-        cam = new Camera(-800,0);
+        cam = new Camera(-400,0);
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
@@ -47,8 +47,8 @@ public class GameScene extends Scene {
 
         hero = new Hero();
         pane.getChildren().add(hero.getSprite());
-        hero.getSprite().setX(350);
-        hero.getSprite().setY(200);
+        hero.getSprite().setX(300-(int)pane.getLayoutX());
+        hero.getSprite().setY(250);
     }
 
 }
