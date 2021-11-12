@@ -3,92 +3,88 @@ import javafx.scene.image.ImageView;
 
 public class Hero extends animatedThings{
     public Hero(int x,int y){
-        super(x,y,"heros.png",20,10,60,90,1,0,0,0,0,0);
+        super(x,y,"heros.png",20,8,75,100,1,0,0,0,0,0);
     }
 
     public void SetFrame(int x,int y){
         if (x==1){
+            this.l=75;
             if (y==1){
                 this.cropX=20;
-                this.cropY=10;
-                this.l=60;
-                this.L=90;}
+                this.cropY=8;
+                }
             if (y==2){
                 this.cropX=95;
                 this.cropY=4;
-                this.l=75;
-                this.L=95;}
+                }
             if (y==3){
                 this.cropX=174;
                 this.cropY=16;
-                this.l=76;
-                this.L=82;}
+                }
             if (y==4){
                 this.cropX=274;
                 this.cropY=14;
-                this.l=55;
-                this.L=84;}
+                }
             if (y==5){
                 this.cropX=350;
                 this.cropY=5;
-                this.l=61;
-                this.L=93;}
+                }
             if (y==6){
                 this.cropX=428;
                 this.cropY=18;
-                this.l=72;
-                this.L=80;}
+                }
             }
         if (x==2){
+            this.l=75;
             if (y==1){
-                this.cropX=25;
+                this.cropX=20;
                 this.cropY=164;
-                this.l=46;
-                this.L=97;}
+                }
             if (y==2){
                 this.cropX=96;
                 this.cropY=164;
-                this.l=62;
-                this.L=97;}
+                }
             }
         if (x == 3) {
+            this.l=75;
             if (y==1){
-                this.cropX=10;
+                this.cropX=8;
                 this.cropY=325;
-                this.l=70;
-                this.L=100;}
+                }
             if (y==2){
                 this.cropX=80;
                 this.cropY=325;
                 this.l=80;
-                this.L=100;}
+                }
             if (y==3){
-                this.cropX=160;
+                this.cropX=163;
                 this.cropY=325;
-                this.l=90;
-                this.L=100;}
+                }
             if (y==4){
-                this.cropX=240;
+                this.cropX=247;
                 this.cropY=325;
-                this.l=90;
-                this.L=100;}
+                }
             if (y==5){
-                this.cropX=330;
+                this.cropX=339;
                 this.cropY=325;
-                this.l=90;
-                this.L=100;}
+                }
             if (y==6){
-                this.cropX=420;
+                this.cropX=425;
                 this.cropY=325;
-                this.l=170;
-                this.L=100;}
+                this.l=80;
+                }
         }
         if (x==4){
+            this.l=75;
             if (y==1){
                 this.cropX=10;
                 this.cropY=490;
-                this.l=80;
-                this.L=110;}
+                }
+            if (y==2){
+                this.cropX=94;
+                this.cropY=490;
+
+            }
         }
         sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),this.getl(),this.getL()));
     }
@@ -115,6 +111,8 @@ S5 : 330 ; 325 ; 90 ; 100
 S6 : 420 ; 325 ; 170 ; 100
 JUMP AND SHOOT :
 S1 : 10 ; 490; 80 ; 110
-S2 : 90 ; 490 ; 80 ; 110
+S2 : 90 ; 490 ; 75 ; 100
+
+POW POW : 510 ; 325 ; 80 ; 100
 
  */

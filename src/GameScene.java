@@ -49,7 +49,7 @@ public class GameScene extends Scene {
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
-        hero.SetFrame(1,4);
+        hero.SetFrame(4,2);
     }
 
 }
