@@ -35,6 +35,8 @@ public abstract class animatedThings {
         return px;
     }
 
+    public void setPx(int i) { px=i;}
+
     public int getPy() {
         return py;
     }

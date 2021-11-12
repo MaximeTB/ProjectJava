@@ -59,6 +59,8 @@ public class GameScene extends Scene {
             GameScene.update(time); */
             System.out.println("Tic");
             hero.SetFrame(2,(hero.getInd2()+1)%7);
+            hero.getSprite().setX((hero.getPx()+20)%1600);
+            hero.setPx((hero.getPx()+20)%1600);
             }
         };
         timer.start();
