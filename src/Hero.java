@@ -3,10 +3,13 @@ import javafx.scene.image.ImageView;
 
 public class Hero extends animatedThings{
     public Hero(int x,int y){
-        super(x,y,"heros.png",20,8,75,100,1,0,0,0,0,0);
+        super(x,y,"heros.png",20,8,75,100,1,1,1,0,0,0,0);
     }
 
     public void SetFrame(int x,int y){
+        this.ind1=x;
+        this.ind2=y;
+
         if (x==1){
             this.l=75;
             if (y==1){

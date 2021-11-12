@@ -3,15 +3,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class animatedThings {
-    int px,py, att,ind,dur,indmax,sw,off;
+    int px,py, att,ind1,ind2,dur,indmax,sw,off;
     int cropX,cropY,l,L; //Pour sélectionner la frame.
     protected ImageView sprite;
 
-    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int L,int att,int ind,int dur,int indmax,int sw,int off){
+    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int L,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
         this.px=x;
         this.py=y;
         this.att=att;
-        this.ind=ind;
+        this.ind1=ind1;
+        this.ind2=ind2;
         this.dur=dur;
         this.indmax=indmax;
         this.sw=sw;
@@ -42,8 +43,12 @@ public abstract class animatedThings {
         return att;
     }
 
-    public int getInd() {
-        return ind;
+    public int getInd1() {
+        return ind1;
+    }
+
+    public int getInd2() {
+        return ind2;
     }
 
     public int getDur() {

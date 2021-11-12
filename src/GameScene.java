@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -49,7 +50,18 @@ public class GameScene extends Scene {
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
-        hero.SetFrame(4,2);
+        //hero.SetFrame(4,2);
+
+        AnimationTimer timer = new AnimationTimer()
+        {public void handle(long time){
+            /* hero.update(time);
+            camera.update(time);
+            GameScene.update(time); */
+            System.out.println("Tic");
+            hero.SetFrame(2,(hero.getInd2()+1)%7);
+            }
+        };
+        timer.start();
     }
 
 }
