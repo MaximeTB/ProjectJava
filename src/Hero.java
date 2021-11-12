@@ -91,6 +91,12 @@ public class Hero extends animatedThings{
         }
         sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),this.getl(),this.getL()));
     }
+
+    public void updateHero(long time){
+        SetFrame(2,(getInd2()+1)%7);
+        getSprite().setX((getPx()+20)%1600);
+        setPx((getPx()+20)%1600);
+    }
 }
 
 

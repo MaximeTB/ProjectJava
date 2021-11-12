@@ -7,7 +7,11 @@ import javafx.scene.layout.Pane;
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
-    private staticThing bckgrndLeft,bckgrndRight,heart1,heart2,heart3;
+    private static staticThing bckgrndLeft;
+    private static staticThing bckgrndRight;
+    private staticThing heart1;
+    private staticThing heart2;
+    private staticThing heart3;
     private int numberOfLives;
 
     public GameScene(Pane pane,int v,int v1) {
@@ -17,8 +21,6 @@ public class GameScene extends Scene {
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
-
-
 
         //Mise en place de l'arrière plan
         bckgrndLeft= new BackGround(0,0,0,0,800,400);
@@ -36,7 +38,7 @@ public class GameScene extends Scene {
         heart1.getImage().setY(heart1.getY());
         pane.getChildren().add(heart1.getImage());
 
-        heart2= new Heart(33-(int)pane.getLayoutX(),10-(int)pane.getLayoutY());
+        heart2= new Heart(33-(int)cam.getX(),10-(int)cam.getY());
         heart2.getImage().setX(heart2.getX());
         heart2.getImage().setY(heart2.getY());
         pane.getChildren().add(heart2.getImage());
@@ -58,12 +60,14 @@ public class GameScene extends Scene {
             camera.update(time);
             GameScene.update(time); */
             System.out.println("Tic");
-            hero.SetFrame(2,(hero.getInd2()+1)%7);
-            hero.getSprite().setX((hero.getPx()+20)%1600);
-            hero.setPx((hero.getPx()+20)%1600);
+            GameScene.update(time);
             }
         };
         timer.start();
+    }
+
+    public static void update(long time) {
+
     }
 
 }

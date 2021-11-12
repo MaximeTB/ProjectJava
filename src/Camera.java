@@ -20,7 +20,10 @@ public class Camera {
     }
 
 
-
+    public void updateCam(long time) {
+            this.x=x-5;
+        }
+*/
     @Override
     public String toString(){
         return x+","+y;
