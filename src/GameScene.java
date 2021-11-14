@@ -7,13 +7,14 @@ import javafx.scene.layout.Pane;
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
-    private staticThing bckgrndLeft,bckgrndRight,heart1,heart2,heart3;
+    private BackGround bckgrndLeft,bckgrndRight;
+    private Heart heart1,heart2,heart3;
     private int numberOfLives;
 
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
         numberOfLives=3;
-        cam = new Camera(-400,0);
+        cam = new Camera(0,0);
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
@@ -54,19 +55,44 @@ public class GameScene extends Scene {
 
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
-            /* hero.update(time);
-            camera.update(time);
-            GameScene.update(time); */
-            System.out.println("Tic");
-            hero.SetFrame(1,(hero.getInd2()+1)%7);
+            hero.update(time);
+            cam.update(time,hero);
+            GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
 
-            bckgrndLeft.getImage().setX(bckgrndLeft.getX()-20);
+
+
+            /*bckgrndLeft.getImage().setX(bckgrndLeft.getX()-20);
             bckgrndLeft.setX(bckgrndLeft.getX()-20);
             bckgrndRight.getImage().setX((bckgrndRight.getX()-20)%-800);
-            bckgrndRight.setX((bckgrndRight.getX()-20)%-800);
+            bckgrndRight.setX((bckgrndRight.getX()-20)%-800);*/
             }
         };
         timer.start();
+    }
+
+    public static void update(long time, Pane pane,Camera cam,Heart heart1,Heart heart2,Heart heart3,BackGround bckgrndLeft,BackGround bckgrndRight){
+        pane.setLayoutX(-cam.getX());
+        heart1.setX(10-pane.getLayoutX());
+        heart1.getImage().setX(10-pane.getLayoutX());
+        heart2.setX(33-pane.getLayoutX());
+        heart2.getImage().setX(33-pane.getLayoutX());
+        heart3.setX(56-pane.getLayoutX());
+        heart3.getImage().setX(56-pane.getLayoutX());
+
+        if (cam.getX()-bckgrndLeft.getX()>=800){
+            bckgrndLeft.setX(cam.getX()+795);
+            bckgrndLeft.getImage().setX(795-pane.getLayoutX());
+            System.out.println("Tic");
+        }
+
+
+
+        if (cam.getX()-bckgrndRight.getX()>=800){
+            bckgrndRight.setX(cam.getX()+795);
+            bckgrndRight.getImage().setX(795-pane.getLayoutX());
+            System.out.println("Tac");
+        }
+
     }
 
 }

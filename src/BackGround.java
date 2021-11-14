@@ -4,5 +4,7 @@ public class BackGround extends staticThing{
         super( x,y,"desert.png",0,0,800,400);
     }
 
-
+    public void update(long time){
+        /*if*/
+    }
 }

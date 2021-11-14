@@ -88,4 +88,48 @@ public abstract class animatedThings {
     public void setPy(int py) {
         this.py = py;
     }
+
+    public void setAtt(int att) {
+        this.att = att;
+    }
+
+    public void setInd1(int ind1) {
+        this.ind1 = ind1;
+    }
+
+    public void setInd2(int ind2) {
+        this.ind2 = ind2;
+    }
+
+    public void setDur(int dur) {
+        this.dur = dur;
+    }
+
+    public void setIndmax(int indmax) {
+        this.indmax = indmax;
+    }
+
+    public void setSw(int sw) {
+        this.sw = sw;
+    }
+
+    public void setOff(int off) {
+        this.off = off;
+    }
+
+    public void setCropX(int cropX) {
+        this.cropX = cropX;
+    }
+
+    public void setCropY(int cropY) {
+        this.cropY = cropY;
+    }
+
+    public void setL(int l) {
+        this.l = l;
+    }
+
+    public void setSprite(ImageView sprite) {
+        this.sprite = sprite;
+    }
 }
