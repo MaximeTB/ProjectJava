@@ -27,4 +27,23 @@ public class Camera {
     public String toString(){
         return x+","+y;
     }
+
+    public void update(long time,Hero hero){
+        /*Integer k= new Integer(1);
+        Integer m = new Integer(5);
+        Integer f= new Integer(6);*/
+
+        this.setX(this.getX()+7);
+
+
+
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }
