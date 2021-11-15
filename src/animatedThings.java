@@ -35,6 +35,8 @@ public abstract class animatedThings {
         return px;
     }
 
+    public void setPx(int i) { px=i;}
+
     public int getPy() {
         return py;
     }
@@ -80,10 +82,6 @@ public abstract class animatedThings {
     }
 
     public int getL(){return L;}
-
-    public void setPx(int px) {
-        this.px = px;
-    }
 
     public void setPy(int py) {
         this.py = py;
