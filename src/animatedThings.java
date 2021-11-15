@@ -3,7 +3,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class animatedThings {
-    int px,py, att,ind1,ind2,dur,indmax,sw,off;
+    double px,py;
+    int att,ind1,ind2,dur,indmax,sw,off;
     int cropX,cropY,l,L; //Pour sélectionner la frame.
     protected ImageView sprite;
 
@@ -31,17 +32,17 @@ public abstract class animatedThings {
 
     public ImageView getSprite() {return sprite;}
 
-    public int getPx() {
+    public double getPx() {
         return px;
     }
 
-    public void setPx(int i) { px=i;}
+    public void setPx(double i) { px=i;}
 
-    public int getPy() {
+    public double getPy() {
         return py;
     }
 
-    public int getAtt() {
+    public double getAtt() {
         return att;
     }
 
@@ -83,7 +84,7 @@ public abstract class animatedThings {
 
     public int getL(){return L;}
 
-    public void setPy(int py) {
+    public void setPy(double py) {
         this.py = py;
     }
 

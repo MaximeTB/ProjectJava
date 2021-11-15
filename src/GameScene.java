@@ -11,6 +11,7 @@ public class GameScene extends Scene {
     private Heart heart1,heart2,heart3;
     private int numberOfLives;
 
+
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
         numberOfLives=3;
@@ -58,6 +59,8 @@ public class GameScene extends Scene {
             hero.update(time);
             cam.update(time,hero);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
+            if(hero.isJumpOk()==true){ hero.jump();}
+            if(hero.isFallOk()==true){ hero.fall();}
 
 
 
@@ -66,8 +69,15 @@ public class GameScene extends Scene {
             bckgrndRight.getImage().setX((bckgrndRight.getX()-20)%-800);
             bckgrndRight.setX((bckgrndRight.getX()-20)%-800);*/
             }
+
         };
         timer.start();
+
+        this.setOnKeyTyped( (event)->{
+            System.out.println("Jump");
+            hero.setJumpOk(true);
+
+        });
     }
 
     public static void update(long time, Pane pane,Camera cam,Heart heart1,Heart heart2,Heart heart3,BackGround bckgrndLeft,BackGround bckgrndRight){
@@ -91,6 +101,7 @@ public class GameScene extends Scene {
             bckgrndRight.setX(cam.getX()+795);
             bckgrndRight.getImage().setX(795-pane.getLayoutX());
             System.out.println("Tac");
+
         }
 
     }
