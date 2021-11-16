@@ -102,7 +102,7 @@ public class Hero extends animatedThings {
 
     public void update(long time) {
         delay = delay + 1;
-        this.setPx(this.getPx() + 7);
+        this.setPx(this.getPx() + 5); //vitesse hero
         this.getSprite().setX(this.getPx());
         if (delay == 5) {
             this.setInd2((this.getInd2() + 1) % 7);
@@ -151,12 +151,8 @@ public class Hero extends animatedThings {
             this.setInd1(1);
             this.setInd2(1);
         }
-//coucou chloé
 
 }
-
-
-
 
     public void setJumpOk(boolean jumpOk) {
         this.jumpOk = jumpOk;

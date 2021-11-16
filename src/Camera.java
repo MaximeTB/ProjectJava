@@ -33,7 +33,7 @@ public class Camera {
         Integer m = new Integer(5);
         Integer f= new Integer(6);*/
 
-        this.setX(this.getX()+7);
+        this.setX(this.getX()+5); //vitesse cam
 
 
 

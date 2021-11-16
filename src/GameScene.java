@@ -59,6 +59,7 @@ public class GameScene extends Scene {
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
         //hero.SetFrame(4,2);
+
 //code afficher ennemi
         ennemi = new Foe(800,260);
         pane.getChildren().add(ennemi.getSprite());
@@ -70,10 +71,10 @@ public class GameScene extends Scene {
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
             hero.update(time);
-            ennemi.update(time);
+            ennemi.update(time,cam);
             cam.update(time,hero);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
-            System.out.println(hero.getPy());
+            //System.out.println(hero.getPy());
 
 
 
@@ -91,7 +92,7 @@ public class GameScene extends Scene {
         };
         timer.start();
 
-        this.setOnKeyTyped( (event)->{
+        this.setOnKeyTyped( (event)->{ //jump quand on presse la barre espace
             System.out.println("Jump");
             if (hero.getPy()>259){
                 hero.setJumpOk(true);}
