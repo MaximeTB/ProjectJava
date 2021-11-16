@@ -59,7 +59,11 @@ public class GameScene extends Scene {
             hero.update(time);
             cam.update(time,hero);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
-            if(hero.isJumpOk()==true){ hero.jump();}
+            System.out.println(hero.getPy());
+
+
+
+            if(hero.isJumpOk()==true){hero.jump();}
             if(hero.isFallOk()==true){ hero.fall();}
 
 
@@ -75,9 +79,11 @@ public class GameScene extends Scene {
 
         this.setOnKeyTyped( (event)->{
             System.out.println("Jump");
-            hero.setJumpOk(true);
+            if (hero.getPy()>259){
+                hero.setJumpOk(true);}
 
         });
+
     }
 
     public static void update(long time, Pane pane,Camera cam,Heart heart1,Heart heart2,Heart heart3,BackGround bckgrndLeft,BackGround bckgrndRight){

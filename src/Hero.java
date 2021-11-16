@@ -114,7 +114,10 @@ public class Hero extends animatedThings {
     }
 
     public void jump() {
-        if (countjump <= 30) {
+        if (countjump <= 30 && isJumpOk()==true) {
+            this.setInd1(2);
+            this.setInd2(1);
+            this.SetFrame(this.getInd1(), this.getInd2());
             this.setPy(this.getPy() - 6 + 0.2 * countjump);
             this.sprite.setY(getPy() - 6 + 0.2 * countjump);
             //System.out.println(getPy());
@@ -130,19 +133,25 @@ public class Hero extends animatedThings {
 
     public void fall() {
 
-        if(this.getPy()<250 & isJumpOk()==false) {
+        if(this.getPy()<260 && isJumpOk()==false) {
+            this.setInd1(2);
+            this.setInd2(2);
+            this.SetFrame(this.getInd1(), this.getInd2())
             this.setPy(this.getPy() + 6 + 0.2 * countfall);
             this.sprite.setY(getPy() + 6 + 0.2 * countfall);
             //System.out.println(getPy());
             countfall = countfall + 1;
-            System.out.println(countfall);
+            //System.out.println(countfall);
         }
-        if(this.getPy()>=250){
-            this.setPy(250);
-            this.sprite.setY(250);
+        if(this.getPy()>=260){
+            this.setPy(260);
+            this.sprite.setY(260);
             countfall=0;
+            setFallOk(false);
+            this.setInd1(1);
+            this.setInd2(1);
         }
-
+//coucou chloé
 
 }
 
