@@ -12,7 +12,7 @@ public class GameScene extends Scene {
     private BackGround bckgrndLeft,bckgrndRight;
     private Heart heart1,heart2,heart3;
     private int numberOfLives;
-    private ArrayList<Foe> clan_alien;
+    private ArrayList<Foe> clan_alien; //tableau des differents ennemis
 
 
     public GameScene(Pane pane,int v,int v1) {
