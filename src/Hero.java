@@ -136,7 +136,7 @@ public class Hero extends animatedThings {
         if(this.getPy()<260 && isJumpOk()==false) {
             this.setInd1(2);
             this.setInd2(2);
-            this.SetFrame(this.getInd1(), this.getInd2())
+            this.SetFrame(this.getInd1(), this.getInd2());
             this.setPy(this.getPy() + 6 + 0.2 * countfall);
             this.sprite.setY(getPy() + 6 + 0.2 * countfall);
             //System.out.println(getPy());

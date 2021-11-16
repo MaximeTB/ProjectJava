@@ -4,12 +4,15 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
     private BackGround bckgrndLeft,bckgrndRight;
     private Heart heart1,heart2,heart3;
     private int numberOfLives;
+    private ArrayList<Foe> clan_alien;
 
 
     public GameScene(Pane pane,int v,int v1) {
