@@ -54,7 +54,7 @@ public class GameScene extends Scene {
         heart3.getImage().setY(heart3.getY());
         pane.getChildren().add(heart3.getImage());
 
-        hero = new Hero(300,260);
+        hero = new Hero(100,260);
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());

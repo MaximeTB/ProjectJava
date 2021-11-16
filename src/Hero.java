@@ -104,7 +104,7 @@ public class Hero extends animatedThings {
         delay = delay + 1;
         this.setPx(this.getPx() + 7);
         this.getSprite().setX(this.getPx());
-        if (delay == 3) {
+        if (delay == 5) {
             this.setInd2((this.getInd2() + 1) % 7);
             this.SetFrame(this.getInd1(), this.getInd2());
             delay = 0;
@@ -118,8 +118,8 @@ public class Hero extends animatedThings {
             this.setInd1(2);
             this.setInd2(1);
             this.SetFrame(this.getInd1(), this.getInd2());
-            this.setPy(this.getPy() - 6 + 0.2 * countjump);
-            this.sprite.setY(getPy() - 6 + 0.2 * countjump);
+            this.setPy(this.getPy() - 7 + 0.2 * countjump);
+            this.sprite.setY(getPy() - 7 + 0.2 * countjump);
             //System.out.println(getPy());
             countjump = countjump + 1;
         }
