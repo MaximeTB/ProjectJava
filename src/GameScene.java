@@ -9,6 +9,9 @@ import java.util.ArrayList;
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
+    //code afficher ennemi
+    private Foe ennemi;
+    //code afficher ennemi
     private BackGround bckgrndLeft,bckgrndRight;
     private Heart heart1,heart2,heart3;
     private int numberOfLives;
@@ -56,10 +59,18 @@ public class GameScene extends Scene {
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
         //hero.SetFrame(4,2);
+//code afficher ennemi
+        ennemi = new Foe(800,260);
+        pane.getChildren().add(ennemi.getSprite());
+        ennemi.getSprite().setX(ennemi.getPx()-(int)pane.getLayoutX());
+        ennemi.getSprite().setY(ennemi.getPy());
+        //hero.SetFrame(4,2);
+//code afficher ennemi
 
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
             hero.update(time);
+            ennemi.update(time);
             cam.update(time,hero);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
             System.out.println(hero.getPy());

@@ -7,6 +7,9 @@ public abstract class animatedThings {
     int att,ind1,ind2,dur,indmax,sw,off;
     int cropX,cropY,l,L; //Pour sélectionner la frame.
     protected ImageView sprite;
+    //code afficher ennemi
+    protected ImageView ennemi;
+    //code afficher ennemi
 
     public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int L,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
         this.px=x;
@@ -27,6 +30,14 @@ public abstract class animatedThings {
 
         sprite=new ImageView(new Image(fileName));
         sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,L));
+        //affichage du héro
+
+
+//code afficher ennemi
+        ennemi=new ImageView(new Image(fileName));
+        ennemi.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,L));
+        //affichage de ennemi
+//code afficher ennemi
 
     }
 
