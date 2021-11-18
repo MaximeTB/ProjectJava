@@ -11,6 +11,7 @@ public class GameScene extends Scene {
     private Hero hero;
     //code afficher ennemi
     private Foe ennemi;
+    private Perdu perdu;
     //code afficher ennemi
     private BackGround bckgrndLeft,bckgrndRight;
     private Heart heart1,heart2,heart3;
@@ -68,13 +69,22 @@ public class GameScene extends Scene {
         //hero.SetFrame(4,2);
 //code afficher ennemi
 
+//afficher perdu
+        perdu= new Perdu(800,260);
+        pane.getChildren().add(perdu.getSprite());
+        perdu.getSprite().setX(perdu.getPx()-(int)pane.getLayoutX());
+        perdu.getSprite().setY(perdu.getPy());
+//afficher perdu
+
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
-            hero.update(time);
+            hero.update(time,ennemi);
             ennemi.update(time,cam);
             cam.update(time,hero);
+            perdu.update(time,hero,ennemi);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
             //System.out.println(hero.getPy());
+
 
 
 

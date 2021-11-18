@@ -100,7 +100,7 @@ public class Hero extends animatedThings {
     }
 
 
-    public void update(long time) {
+    public void update(long time, Foe ennemi) {
         delay = delay + 1;
         this.setPx(this.getPx() + 5); //vitesse hero
         this.getSprite().setX(this.getPx());
@@ -109,6 +109,7 @@ public class Hero extends animatedThings {
             this.SetFrame(this.getInd1(), this.getInd2());
             delay = 0;
         }
+
 
 
     }
