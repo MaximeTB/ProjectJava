@@ -27,6 +27,9 @@ public class GameScene extends Scene {
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
 
+        pane.setLayoutX(perdu.getX());
+        pane.setLayoutY(perdu.getY());
+
 
 
         //Mise en place de l'arrière plan
@@ -70,10 +73,10 @@ public class GameScene extends Scene {
 //code afficher ennemi
 
 //afficher perdu
-        perdu= new Perdu(800,260);
-        pane.getChildren().add(perdu.getSprite());
-        perdu.getSprite().setX(perdu.getPx()-(int)pane.getLayoutX());
-        perdu.getSprite().setY(perdu.getPy());
+        perdu= new Perdu(33-(int)pane.getLayoutX(),10-(int)pane.getLayoutY());
+        perdu.getImage().setX(perdu.getX());
+        perdu.getImage().setY(perdu.getY());
+        pane.getChildren().add(perdu.getImage());
 //afficher perdu
 
         AnimationTimer timer = new AnimationTimer()
@@ -82,7 +85,7 @@ public class GameScene extends Scene {
             ennemi.update(time,cam);
             cam.update(time,hero);
             perdu.update(time,hero,ennemi);
-            GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight);
+            GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight,perdu);
             //System.out.println(hero.getPy());
 
 
@@ -111,7 +114,7 @@ public class GameScene extends Scene {
 
     }
 
-    public static void update(long time, Pane pane,Camera cam,Heart heart1,Heart heart2,Heart heart3,BackGround bckgrndLeft,BackGround bckgrndRight){
+    public static void update(long time, Pane pane,Camera cam,Heart heart1,Heart heart2,Heart heart3,BackGround bckgrndLeft,BackGround bckgrndRight, Perdu perdu){
         pane.setLayoutX(-cam.getX());
         heart1.setX(10-pane.getLayoutX());
         heart1.getImage().setX(10-pane.getLayoutX());
@@ -125,8 +128,6 @@ public class GameScene extends Scene {
             bckgrndLeft.getImage().setX(795-pane.getLayoutX());
             System.out.println("Tic");
         }
-
-
 
         if (cam.getX()-bckgrndRight.getX()>=800){
             bckgrndRight.setX(cam.getX()+795);
