@@ -22,7 +22,9 @@ public class GameScene extends Scene {
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
         numberOfLives=3;
-        cam = new Camera(0,0);
+        this.cam = new Camera(0,0);
+        this.perdu=new Perdu(0,0) ;
+        this.clan_alien= new ArrayList<Foe>();
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
@@ -77,7 +79,7 @@ public class GameScene extends Scene {
 //code afficher ennemi
 
 //afficher perdu
-        perdu= new Perdu((int)33-pane.getLayoutX(),(int)10-pane.getLayoutY());
+        perdu= new Perdu(33-pane.getLayoutX(),10-pane.getLayoutY());
         perdu.getImage().setX(perdu.getX());
         perdu.getImage().setY(perdu.getY());
         pane.getChildren().add(perdu.getImage());
@@ -95,8 +97,8 @@ public class GameScene extends Scene {
 
 
 
-            if(hero.isJumpOk()==true){hero.jump();}
-            if(hero.isFallOk()==true){ hero.fall();}
+            if(hero.isJumpOk()){hero.jump();}
+            if(hero.isFallOk()){ hero.fall();}
 
 
 
