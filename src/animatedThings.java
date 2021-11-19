@@ -34,8 +34,8 @@ public abstract class animatedThings {
 
 
 //code afficher ennemi
-        ennemi=new ImageView(new Image(fileName));
-        ennemi.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,L));
+        /*ennemi=new ImageView(new Image(fileName));
+        ennemi.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,L));*/
 //code afficher ennemi
 
     }

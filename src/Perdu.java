@@ -4,7 +4,7 @@ import javafx.scene.image.ImageView;
 
 public class Perdu extends staticThing{
     private int delay;
-    public Perdu(int x, int y, String fileName, double cx1, double cy1, double cx2, double cy2) {
+    public Perdu(double x, double y) {
         super(x, y, "perdu_détouré.png", 0, 0, 800, 400);
 
     }

@@ -62,18 +62,22 @@ public class GameScene extends Scene {
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
-        //hero.SetFrame(4,2);
+
 
 //code afficher ennemi
         ennemi = new Foe(800,260);
+        clan_alien.add(ennemi);
         pane.getChildren().add(ennemi.getSprite());
         ennemi.getSprite().setX(ennemi.getPx()-(int)pane.getLayoutX());
         ennemi.getSprite().setY(ennemi.getPy());
-        //hero.SetFrame(4,2);
+
+        Foe ennemi1= new Foe(1600,260);
+        clan_alien.add(ennemi1);
+
 //code afficher ennemi
 
 //afficher perdu
-        perdu= new Perdu(33-(int)pane.getLayoutX(),10-(int)pane.getLayoutY());
+        perdu= new Perdu((int)33-pane.getLayoutX(),(int)10-pane.getLayoutY());
         perdu.getImage().setX(perdu.getX());
         perdu.getImage().setY(perdu.getY());
         pane.getChildren().add(perdu.getImage());
