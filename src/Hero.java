@@ -97,7 +97,7 @@ public class Hero extends animatedThings {
 
             }
         }
-        sprite.setViewport(new Rectangle2D(this.getCropX(), this.getCropY(), this.getl(), this.getL()));
+        sprite.setViewport(new Rectangle2D(this.getCropX(), this.getCropY(), this.getl(), this.geth()));
     }
 
 
@@ -105,7 +105,7 @@ public class Hero extends animatedThings {
         delay = delay + 1;
         this.setPx(this.getPx() + 5); //vitesse hero
         this.getSprite().setX(this.getPx());
-        hitbox=new Rectangle2D(this.getPx(),this.getPy(),this.getl(),this.getL());
+        hitbox=new Rectangle2D(this.getPx(),this.getPy(),this.getl(),this.geth());
         if (delay == 5) {
             this.setInd2((this.getInd2() + 1) % 7);
             this.SetFrame(this.getInd1(), this.getInd2());
@@ -121,8 +121,8 @@ public class Hero extends animatedThings {
             this.setInd1(2);
             this.setInd2(1);
             this.SetFrame(this.getInd1(), this.getInd2());
-            this.setPy(this.getPy() - 7 + 0.2 * countjump);
-            this.sprite.setY(getPy() - 7 + 0.2 * countjump);
+            this.setPy(this.getPy() - 8 + 0.2 * countjump);
+            this.sprite.setY(getPy() - 8 + 0.2 * countjump);
             //System.out.println(getPy());
             countjump = countjump + 1;
         }
