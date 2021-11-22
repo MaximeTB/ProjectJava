@@ -10,6 +10,6 @@ public class Perdu extends staticThing{
     }
 
     public void update(long time, Hero hero, Foe ennemi) {
-        if(ennemi.getPx()-(hero.getl()+hero.getPx())<=1){System.out.println("PERDU");}
+        if(ennemi.getPx()-(hero.getl()+hero.getPx())<=1 && ennemi.getPy()-(hero.getPy()+hero.getL())>=1){System.out.println("PERDU");}
         }
 }
