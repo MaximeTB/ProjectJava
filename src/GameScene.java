@@ -11,14 +11,16 @@ public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
     //code afficher ennemi
-    private Foe ennemi;
+    //private Foe ennemi1,ennemi2;
     private Perdu perdu;
     //code afficher ennemi
     private BackGround bckgrndLeft,bckgrndRight;
     private Heart heart1,heart2,heart3;
     private ArrayList<ImageView> list_heart;
-    private int numberOfLives;
+    private int numberOfLives,ennemi;
+    //Perte de coeur
     private ArrayList<Foe> clan_alien; //tableau des differents ennemis
+
 
 
     public GameScene(Pane pane,int v,int v1) {
@@ -73,14 +75,20 @@ public class GameScene extends Scene {
 
 
 //code afficher ennemi
-        ennemi = new Foe(800,275);
-        clan_alien.add(ennemi);
-        pane.getChildren().add(ennemi.getSprite());
-        ennemi.getSprite().setX(ennemi.getPx()-(int)pane.getLayoutX());
-        ennemi.getSprite().setY(ennemi.getPy());
+        /*ennemi1 = new Foe(800,275);
+        ennemi2 = new Foe(1600,100);*/
+        clan_alien.add(new Foe(800,275)); //permet de se passer des noms
+        pane.getChildren().add(clan_alien.get(0).getSprite());
+        clan_alien.get(0).getSprite().setX(clan_alien.get(0).getPx()-(int)pane.getLayoutX());
+        clan_alien.get(0).getSprite().setY(clan_alien.get(0).getPy());
 
-        Foe ennemi1= new Foe(1600,260);
-        clan_alien.add(ennemi1);
+
+        clan_alien.add(new Foe(1600,100));
+        pane.getChildren().add(clan_alien.get(1).getSprite());
+        clan_alien.get(1).getSprite().setX(clan_alien.get(1).getPx()-(int)pane.getLayoutX());
+        clan_alien.get(1).getSprite().setY(clan_alien.get(1).getPy());
+
+
 
 //code afficher ennemi
 
@@ -93,10 +101,11 @@ public class GameScene extends Scene {
 
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
-            hero.update(time,ennemi);
-            ennemi.update(time,cam);
+            hero.update(time,clan_alien.get(0));
+            clan_alien.get(0).update(time,cam);
+            clan_alien.get(1).update(time,cam);
             cam.update(time,hero);
-            perdu.update(time,hero,ennemi,pane,list_heart);
+            perdu.update(time,hero,clan_alien.get(0),pane,list_heart);
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight,perdu);
             //System.out.println(hero.getPy());
 
@@ -108,10 +117,7 @@ public class GameScene extends Scene {
 
 
 
-            /*bckgrndLeft.getImage().setX(bckgrndLeft.getX()-20);
-            bckgrndLeft.setX(bckgrndLeft.getX()-20);
-            bckgrndRight.getImage().setX((bckgrndRight.getX()-20)%-800);
-            bckgrndRight.setX((bckgrndRight.getX()-20)%-800);*/
+
             }
 
         };

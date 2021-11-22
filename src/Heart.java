@@ -7,4 +7,5 @@ public class Heart extends staticThing {
     public Heart(int x,int y){
         super(x,y,"Heart.png",0,0,30,25);
     }
+
 }

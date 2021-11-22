@@ -22,17 +22,17 @@ public class Foe extends animatedThings {
                 if (delay == 3) {
                     delay = 0;
                 }
-            };
+            }
             if(speed_ennemi>1){
                 this.setPx(this.getPx() - 10 * speed_ennemi);
                 this.getSprite().setX(this.getPx());
                 //System.out.println(this.getPx());
 
-            };
+            }
         }
 
         if(this.getPx()<cam.getX()-100) {
-            this.setPx(this.getPx()+1000);
+            this.setPx(this.getPx()+1600);
             this.getSprite().setX(this.getPx());
         }
 
@@ -40,7 +40,14 @@ public class Foe extends animatedThings {
     public Rectangle2D getHitbox() {
         return hitbox;
         }
-
+    public void Up(){
+        this.setPy(100);
+        this.getSprite().setY(this.getPy());
+    }
+    public void Down(){
+        this.setPy(275);
+        this.getSprite().setY(this.getPy());
+    }
     }
 
 
