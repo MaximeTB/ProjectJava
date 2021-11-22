@@ -5,13 +5,13 @@ import javafx.scene.image.ImageView;
 public abstract class animatedThings {
     double px,py;
     int att,ind1,ind2,dur,indmax,sw,off;
-    int cropX,cropY,l,L; //Pour sélectionner la frame.
+    int cropX,cropY,l,h; //Pour sélectionner la frame.
     protected ImageView sprite;
     //code afficher ennemi
     protected ImageView ennemi;
     //code afficher ennemi
 
-    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int L,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
+    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int h,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
         this.px=x;
         this.py=y;
         this.att=att;
@@ -25,11 +25,11 @@ public abstract class animatedThings {
         this.cropX=cropX;
         this.cropY=cropY;
         this.l=l;
-        this.L=L;
+        this.h=h;
 
 
         sprite=new ImageView(new Image(fileName));
-        sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,L));
+        sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),l,h));
         //affichage du héro
 
 
@@ -92,7 +92,7 @@ public abstract class animatedThings {
         return l;
     }
 
-    public int getL(){return L;}
+    public int geth(){return h;}
 
     public void setPy(double py) {
         this.py = py;
@@ -134,7 +134,7 @@ public abstract class animatedThings {
         this.cropY = cropY;
     }
 
-    public void setL(int l) {
+    public void setl(int l) {
         this.l = l;
     }
 
