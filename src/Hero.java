@@ -7,6 +7,7 @@ public class Hero extends animatedThings {
     private boolean fallOk;
     private int countjump = 0;
     private int countfall = 0;
+    private Rectangle2D hitbox;
 
     public Hero(int x, int y) {
         super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, 0);
@@ -104,6 +105,7 @@ public class Hero extends animatedThings {
         delay = delay + 1;
         this.setPx(this.getPx() + 5); //vitesse hero
         this.getSprite().setX(this.getPx());
+        hitbox=new Rectangle2D(this.getPx(),this.getPy(),this.getl(),this.getL());
         if (delay == 5) {
             this.setInd2((this.getInd2() + 1) % 7);
             this.SetFrame(this.getInd1(), this.getInd2());
@@ -169,6 +171,10 @@ public class Hero extends animatedThings {
 
     public boolean isFallOk() {
         return fallOk;
+    }
+
+    public Rectangle2D getHitbox() {
+        return hitbox;
     }
 }
 

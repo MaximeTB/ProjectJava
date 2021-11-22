@@ -23,6 +23,8 @@ public class staticThing {
         return image;
     }
 
+    public void setImage(ImageView image){this.image=image;}
+
     public double getX() {
         return x;
     }
