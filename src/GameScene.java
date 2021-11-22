@@ -10,32 +10,30 @@ import java.util.ArrayList;
 public class GameScene extends Scene {
     private Camera cam;
     private Hero hero;
-    //code afficher ennemi
-    //private Foe ennemi1,ennemi2;
+    private BackGround bckgrndLeft,bckgrndRight;
     private Perdu perdu;
     //code afficher ennemi
-    private BackGround bckgrndLeft,bckgrndRight;
-    private Heart heart1,heart2,heart3;
-    private ArrayList<ImageView> list_heart;
-    private int numberOfLives,ennemi;
-    //Perte de coeur
     private ArrayList<Foe> clan_alien; //tableau des differents ennemis
 
+    //Perte de coeur
+    private Heart heart1,heart2,heart3;
+    private ArrayList<ImageView> list_heart;
+    //fin de jeu
+    private boolean endgame;
 
 
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
-        numberOfLives=3;
         this.cam = new Camera(0,0);
-        this.perdu=new Perdu(0,0) ;
+        //this.perdu=new Perdu(0,0,pane) ;
         this.clan_alien= new ArrayList<Foe>();
         this.list_heart=new ArrayList<ImageView>();
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
 
-        pane.setLayoutX(perdu.getX());
-        pane.setLayoutY(perdu.getY());
+        //pane.setLayoutX(perdu.getX());
+        //pane.setLayoutY(perdu.getY());
 
 
 
@@ -93,33 +91,35 @@ public class GameScene extends Scene {
 //code afficher ennemi
 
 //afficher perdu
-        perdu= new Perdu(33-pane.getLayoutX(),10-pane.getLayoutY());
-        perdu.getImage().setX(perdu.getX());
-        perdu.getImage().setY(perdu.getY());
+        this.perdu= new Perdu(33-pane.getLayoutX(),10-pane.getLayoutY());
+        //perdu.getImage().setX(perdu.getX());
+        //perdu.getImage().setY(perdu.getY());
+        perdu.getImage().setX(-600);
+        perdu.getImage().setY(-600);
         pane.getChildren().add(perdu.getImage());
 //afficher perdu
 
         AnimationTimer timer = new AnimationTimer()
         {public void handle(long time){
-            hero.update(time,clan_alien.get(0));
+            if (!endgame){
+                hero.update(time,clan_alien.get(0));}
             clan_alien.get(0).update(time,cam);
             clan_alien.get(1).update(time,cam);
             cam.update(time,hero);
-            perdu.update(time,hero,clan_alien.get(0),pane,list_heart);
+            perdu.update(time,hero,clan_alien,pane,list_heart);
+            if(list_heart.size()==0){
+                /*perdu.GameOver(pane);*/
+                endgame=true;
+                perdu.getImage().setX(33-pane.getLayoutX());
+                perdu.getImage().setY(10-pane.getLayoutY());
+            }
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight,perdu);
-            //System.out.println(hero.getPy());
-
-
 
 
             if(hero.isJumpOk()){hero.jump();}
             if(hero.isFallOk()){ hero.fall();}
 
-
-
-
             }
-
         };
         timer.start();
 
@@ -144,14 +144,11 @@ public class GameScene extends Scene {
         if (cam.getX()-bckgrndLeft.getX()>=800){
             bckgrndLeft.setX(cam.getX()+795);
             bckgrndLeft.getImage().setX(795-pane.getLayoutX());
-            System.out.println("Tic");
         }
 
         if (cam.getX()-bckgrndRight.getX()>=800){
             bckgrndRight.setX(cam.getX()+795);
             bckgrndRight.getImage().setX(795-pane.getLayoutX());
-            System.out.println("Tac");
-
         }
 
     }
