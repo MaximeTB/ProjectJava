@@ -81,7 +81,7 @@ public class GameScene extends Scene {
         clan_alien.get(0).getSprite().setY(clan_alien.get(0).getPy());
 
 
-        clan_alien.add(new Foe(1600,100));
+        clan_alien.add(new Foe(1200,150));
         pane.getChildren().add(clan_alien.get(1).getSprite());
         clan_alien.get(1).getSprite().setX(clan_alien.get(1).getPx()-(int)pane.getLayoutX());
         clan_alien.get(1).getSprite().setY(clan_alien.get(1).getPy());

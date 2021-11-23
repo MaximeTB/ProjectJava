@@ -31,8 +31,8 @@ public class Foe extends animatedThings {
             }
         }
 
-        if(this.getPx()<cam.getX()-100) {
-            this.setPx(this.getPx()+1600);
+        if(this.getPx()<cam.getX()-50) {
+            this.setPx(this.getPx()+850);
             this.getSprite().setX(this.getPx());
         }
 
