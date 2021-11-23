@@ -113,10 +113,10 @@ public class GameScene extends Scene {
             }
             if(EnnemiIsDead){
                 clan_alien.remove(deadEnnemi);
-                lastPosition=clan_alien.get(0).getPy();
+                lastPosition=clan_alien.get(0).getSprite().getY();
                 double r=Math.random();
                 System.out.println(r);
-                Foe newEnnemi=new Foe(lastPosition+r*800+800,deadEnnemi.getPy(),pane,clan_alien,cam) ;
+                Foe newEnnemi=new Foe(lastPosition+r*800+1600,deadEnnemi.getPy(),pane,clan_alien,cam) ;
                 clan_alien.add(newEnnemi);
                 newEnnemi.getSprite().setX(newEnnemi.getPx());
                 if ((r-0.5)>0){
