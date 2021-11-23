@@ -125,7 +125,7 @@ public class GameScene extends Scene {
         timer.start();
 
         this.setOnKeyTyped( (event)->{ //jump quand on presse la barre espace
-            System.out.println("Jump");
+            //System.out.println("Jump");
             if (hero.getPy()>259){
                 hero.setJumpOk(true);}
 

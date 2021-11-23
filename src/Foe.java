@@ -10,6 +10,8 @@ public class Foe extends animatedThings {
         delay = 0;
     }
     public void update(long time,Camera cam) {
+        hitbox = new Rectangle2D(this.getPx(), this.getPy(), this.getl(), this.geth());
+
         if(this.getPx()>0){
             delay = delay + 1;
             if(speed_ennemi<=1) {
@@ -18,7 +20,6 @@ public class Foe extends animatedThings {
                 this.getSprite().setX(this.getPx());
                 //System.out.println(this.getPx());
                 count_ennemi = this.getPx();
-                hitbox = new Rectangle2D(this.getPx(), this.getPy(), this.getl(), this.geth());
                 if (delay == 3) {
                     delay = 0;
                 }
