@@ -11,7 +11,7 @@ public abstract class animatedThings {
     protected ImageView ennemi;
     //code afficher ennemi
 
-    public animatedThings(int x, int y, String fileName, int cropX, int cropY, int l, int h,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
+    public animatedThings(double x, double y, String fileName, int cropX, int cropY, int l, int h,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
         this.px=x;
         this.py=y;
         this.att=att;

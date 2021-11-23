@@ -14,6 +14,7 @@ public class Hero extends animatedThings {
     public Hero(int x, int y) {
         super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, 0);
         delay = 0;
+
     }
 
     public void SetFrame(int x, int y) {
@@ -113,9 +114,6 @@ public class Hero extends animatedThings {
             this.SetFrame(this.getInd1(), this.getInd2());
             delay = 0;
         }
-
-
-
     }
 
     public void jump() {
