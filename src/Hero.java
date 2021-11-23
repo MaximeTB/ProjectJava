@@ -1,5 +1,7 @@
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class Hero extends animatedThings {
     private int delay;
@@ -117,7 +119,7 @@ public class Hero extends animatedThings {
     }
 
     public void jump() {
-        if (countjump <= 30 && isJumpOk()==true) {
+        if (countjump <= 30 && isJumpOk()) {
             this.setInd1(2);
             this.setInd2(1);
             this.SetFrame(this.getInd1(), this.getInd2());
@@ -136,7 +138,7 @@ public class Hero extends animatedThings {
 
     public void fall() {
 
-        if(this.getPy()<260 && isJumpOk()==false) {
+        if(this.getPy()<260 && !isJumpOk()) {
             this.setInd1(2);
             this.setInd2(2);
             this.SetFrame(this.getInd1(), this.getInd2());
@@ -176,6 +178,16 @@ public class Hero extends animatedThings {
     public Rectangle2D getHitbox() {
         return hitbox;
     }
+
+    public void ChangeSkin(Pane pane, String filename, int cropX, int cropY, int l, int h){
+        pane.getChildren().remove(this.getSprite());
+        this.sprite =  new ImageView(new Image(filename));
+        this.setCropX(cropX);this.setCropY(cropY);this.setl(l);this.setH(h);
+        this.sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),this.l,this.h));
+        this.sprite.setX(this.getPx());this.sprite.setY(this.getPy()-85);
+        pane.getChildren().add(this.getSprite());
+    }
+
 }
 
 

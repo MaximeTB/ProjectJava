@@ -138,6 +138,14 @@ public abstract class animatedThings {
         this.l = l;
     }
 
+    public void setL(int l) {
+        this.l = l;
+    }
+
+    public void setH(int h) {
+        this.h = h;
+    }
+
     public void setSprite(ImageView sprite) {
         this.sprite = sprite;
     }

@@ -112,6 +112,7 @@ public class GameScene extends Scene {
                 endgame=true;
                 perdu.getImage().setX(33-pane.getLayoutX());
                 perdu.getImage().setY(10-pane.getLayoutY());
+                hero.ChangeSkin(pane,"tombe.png",0,0,206,206);
             }
             GameScene.update(time,pane,cam,heart1,heart2,heart3,bckgrndLeft,bckgrndRight,perdu);
 
