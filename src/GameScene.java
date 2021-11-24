@@ -68,7 +68,7 @@ public class GameScene extends Scene {
 
         //Mise en place Hero
 
-        hero = new Hero(100,260);
+        hero = new Hero(100,260,5);
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
@@ -172,8 +172,7 @@ public class GameScene extends Scene {
                         hero.setJumpOk(true);}
                 }
                 if (t.getCode()==KeyCode.SPACE){
-
-
+                    timer.start();
                 }
             }
         });

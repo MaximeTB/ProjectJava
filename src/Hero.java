@@ -11,8 +11,8 @@ public class Hero extends animatedThings {
     private int countfall = 0;
     private Rectangle2D hitbox;
 
-    public Hero(int x, int y) {
-        super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, 0);
+    public Hero(int x, int y,int off) {
+        super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, off);
         delay = 0;
 
     }
@@ -106,7 +106,7 @@ public class Hero extends animatedThings {
 
     public void update(long time, Foe ennemi) {
         delay = delay + 1;
-        this.setPx(this.getPx() + 5); //vitesse hero
+        this.setPx(this.getPx() + this.off); //vitesse hero
         this.getSprite().setX(this.getPx());
         hitbox=new Rectangle2D(this.getPx(),this.getPy(),this.getl(),this.geth());
         if (delay == 5) {
