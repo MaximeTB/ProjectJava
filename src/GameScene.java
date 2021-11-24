@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class GameScene extends Scene {
     private Camera cam;
     private Pane pane;
-    private Hero hero;
+    private Hero hero = new Hero(100,260,5);
     private BackGround bckgrndLeft,bckgrndRight;
     private Perdu perdu;
     //code afficher ennemi
@@ -33,16 +33,12 @@ public class GameScene extends Scene {
         super(pane,v,v1,true);
         this.pane=pane;
         int nbLife=3;
-        this.cam = new Camera(0,0);
+        this.cam = new Camera(0,0,hero);
         this.clan_alien= new ArrayList<Foe>();
         this.list_heart=new ArrayList<Heart>();
 
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
-
-
-
-
 
         //Mise en place de l'arrière plan
         bckgrndLeft= new BackGround(0,0,0,0,800,400);
@@ -68,7 +64,7 @@ public class GameScene extends Scene {
 
         //Mise en place Hero
 
-        hero = new Hero(100,260,5);
+
         pane.getChildren().add(hero.getSprite());
         hero.getSprite().setX(hero.getPx()-(int)pane.getLayoutX());
         hero.getSprite().setY(hero.getPy());
@@ -101,7 +97,7 @@ public class GameScene extends Scene {
 
             Foe deadEnnemi=null;
             boolean EnnemiIsDead=false;
-            hero.update(time,clan_alien.get(0));
+            hero.update(time);
             for(Foe ennemi : clan_alien) {
                 ennemi.update(time, cam);
                 if (ennemi.isTouche()|ennemi.isFini()){
@@ -112,13 +108,13 @@ public class GameScene extends Scene {
             }
             if(EnnemiIsDead){
                 clan_alien.remove(deadEnnemi);
-                lastPosition=clan_alien.get(0).getSprite().getY();
+                double lastPosition=clan_alien.get(0).getPx();
                 double r=Math.random();
-                System.out.println(r);
-                Foe newEnnemi=new Foe(cam.getX()+r*800+800,deadEnnemi.getPy(),pane,clan_alien,cam) ;
+                double newPosition=lastPosition+r*800+400;
+                Foe newEnnemi=new Foe(newPosition,deadEnnemi.getPy(),pane,clan_alien,cam) ;
                 clan_alien.add(newEnnemi);
                 newEnnemi.getSprite().setX(newEnnemi.getPx());
-                if ((r-0.5)>0){
+                if ((r-0.5)>0.1){
                     newEnnemi.Up();
                 }
                 else {
@@ -127,7 +123,7 @@ public class GameScene extends Scene {
                 //newEnnemi.getSprite().setY(newEnnemi.getPy());
                 pane.getChildren().add(newEnnemi.getSprite());
             }
-            cam.update(time,hero);
+            cam.update(time);
             perdu.update(time,list_heart,nbLife);
             if(list_heart.size()==0){
                 /*perdu.GameOver(pane);*/
@@ -174,6 +170,12 @@ public class GameScene extends Scene {
                 }
                 if (t.getCode()==KeyCode.SPACE){
                     hero.shoot();
+                }
+                if (t.getCode()==KeyCode.RIGHT){
+                    hero.setOff(hero.getOff()+2);
+                }
+                if(t.getCode()==KeyCode.LEFT){
+                    hero.setOff(hero.getOff()-2);
                 }
             }
         });

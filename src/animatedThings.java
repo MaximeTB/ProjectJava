@@ -4,22 +4,17 @@ import javafx.scene.image.ImageView;
 
 public abstract class animatedThings {
     double px,py;
-    int att,ind1,ind2,dur,indmax,sw,off;
+    int att,ind1,ind2,off;
     int cropX,cropY,l,h; //Pour sélectionner la frame.
     protected ImageView sprite;
-    //code afficher ennemi
-    protected ImageView ennemi;
-    //code afficher ennemi
 
-    public animatedThings(double x, double y, String fileName, int cropX, int cropY, int l, int h,int att,int ind1,int ind2,int dur,int indmax,int sw,int off){
+
+    public animatedThings(double x, double y, String fileName, int cropX, int cropY, int l, int h,int att,int ind1,int ind2,int off){
         this.px=x;
         this.py=y;
         this.att=att;
         this.ind1=ind1;
         this.ind2=ind2;
-        this.dur=dur;
-        this.indmax=indmax;
-        this.sw=sw;
         this.off=off;
 
         this.cropX=cropX;
@@ -64,18 +59,6 @@ public abstract class animatedThings {
         return ind2;
     }
 
-    public int getDur() {
-        return dur;
-    }
-
-    public int getIndmax() {
-        return indmax;
-    }
-
-    public int getSw() {
-        return sw;
-    }
-
     public int getOff() {
         return off;
     }
@@ -108,18 +91,6 @@ public abstract class animatedThings {
 
     public void setInd2(int ind2) {
         this.ind2 = ind2;
-    }
-
-    public void setDur(int dur) {
-        this.dur = dur;
-    }
-
-    public void setIndmax(int indmax) {
-        this.indmax = indmax;
-    }
-
-    public void setSw(int sw) {
-        this.sw = sw;
     }
 
     public void setOff(int off) {

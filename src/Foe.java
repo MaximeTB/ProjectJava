@@ -15,7 +15,7 @@ public class Foe extends animatedThings {
     private ArrayList<Foe> clan_ennemi;
 
     public Foe(double x, double y,Pane pane,ArrayList<Foe> clan_ennemi,Camera cam) {
-        super(x, y, "ennemi_détouré.png", 40, 17, 75, 75, 1, 1, 1, 0, 0, 0, 0);
+        super(x, y, "ennemi_détouré.png", 40, 17, 75, 75, 1,1, 1,0);
         delay = 0;
         this.pane=pane;
         this.clan_ennemi=clan_ennemi;
@@ -30,7 +30,6 @@ public class Foe extends animatedThings {
                 speed_ennemi = speed_ennemi + 0.001;
                 this.setPx(this.getPx() - 10 * speed_ennemi);
                 this.getSprite().setX(this.getPx());
-                //System.out.println(this.getPx());
                 count_ennemi = this.getPx();
                 if (delay == 3) {
                     delay = 0;
@@ -78,6 +77,7 @@ public class Foe extends animatedThings {
     public void setTouche(boolean touche) {
         this.touche = touche;
     }
+
 }
 
 

@@ -12,7 +12,7 @@ public class Hero extends animatedThings {
     private Rectangle2D hitbox;
 
     public Hero(int x, int y,int off) {
-        super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, off);
+        super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, off);
         delay = 0;
         shootOk=false;
     }
@@ -104,13 +104,13 @@ public class Hero extends animatedThings {
     }
 
 
-    public void update(long time, Foe ennemi) {
+    public void update(long time) {
         delay = delay + 1;
         if(shootDelay>0 && shootDelay<50){
             this.setInd1(3);
             shootDelay++;
         }
-        if(shootDelay==50){
+        if(shootDelay==100){
             this.setInd1(1);
             shootDelay=0;
             this.setShootOk(false);
@@ -181,7 +181,7 @@ public class Hero extends animatedThings {
     public void shoot() {
         this.setShootOk(true);
         this.shootDelay++;
-        if(this.isJumpOk()==false && this.isFallOk()==false) {
+        /*if(this.isJumpOk()==false && this.isFallOk()==false) {
             this.setInd1(3);
             this.SetFrame(this.getInd1(), this.getInd2());
         };
@@ -194,10 +194,7 @@ public class Hero extends animatedThings {
             this.setInd1(4);
             this.setInd2(2);
             this.SetFrame(this.getInd1(), this.getInd2());
-        };
-
-
-
+        };*/
     }
 
     public void setJumpOk(boolean jumpOk) {

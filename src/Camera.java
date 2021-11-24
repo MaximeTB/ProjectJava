@@ -1,13 +1,15 @@
 public class Camera {
     private int x;
     private int y;
+    private Hero hero;
 
     //Constructor
 
 
-    public Camera(int x , int y) {
+    public Camera(int x , int y,Hero hero) {
         this.x=x;
         this.y=y;
+        this.hero=hero;
     }
 
     //Getters
@@ -28,12 +30,12 @@ public class Camera {
         return x+","+y;
     }
 
-    public void update(long time,Hero hero){
+    public void update(long time){
         /*Integer k= new Integer(1);
         Integer m = new Integer(5);
         Integer f= new Integer(6);*/
 
-        this.setX(this.getX()+5); //vitesse cam
+        this.setX(this.getX()+hero.getOff()); //vitesse cam
 
 
 
