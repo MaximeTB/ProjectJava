@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GameScene extends Scene {
+    private double Score;
     private Camera cam;
     private Pane pane;
     private Hero hero = new Hero(100,260,5);
@@ -97,6 +98,7 @@ public class GameScene extends Scene {
 
             Foe deadEnnemi=null;
             boolean EnnemiIsDead=false;
+            Score++;
             hero.update(time);
             for(Foe ennemi : clan_alien) {
                 ennemi.update(time, cam);
@@ -110,11 +112,11 @@ public class GameScene extends Scene {
                 clan_alien.remove(deadEnnemi);
                 double lastPosition=clan_alien.get(0).getPx();
                 double r=Math.random();
-                double newPosition=lastPosition+r*800+400;
+                double newPosition=lastPosition+r*1000+400;
                 Foe newEnnemi=new Foe(newPosition,deadEnnemi.getPy(),pane,clan_alien,cam) ;
                 clan_alien.add(newEnnemi);
                 newEnnemi.getSprite().setX(newEnnemi.getPx());
-                if ((r-0.5)>0.1){
+                if ((r-0.5)>0){
                     newEnnemi.Up();
                 }
                 else {
@@ -132,6 +134,7 @@ public class GameScene extends Scene {
                 perdu.getImage().setY(10-pane.getLayoutY());
                 hero.ChangeSkin(hero.getPx(),270,pane,"tombe.png",0,0,206,206);
                 hero.getSprite().setFitWidth(100);hero.getSprite().setPreserveRatio(true);
+                System.out.println(Score);
 
             }
             updateGS(time,perdu);
