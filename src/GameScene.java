@@ -172,7 +172,7 @@ public class GameScene extends Scene {
                         hero.setJumpOk(true);}
                 }
                 if (t.getCode()==KeyCode.SPACE){
-                    timer.start();
+                    hero.shoot();
                 }
             }
         });

@@ -154,8 +154,23 @@ public class Hero extends animatedThings {
             this.setInd1(1);
             this.setInd2(1);
         }
+    }
 
-}
+    public void shoot() {
+        if(this.isJumpOk()==true){
+            this.setInd1(4);
+            this.setInd2(1);
+            this.SetFrame(this.getInd1(), this.getInd2());
+        };
+        if(this.isFallOk()==true){
+            this.setInd1(4); 
+            this.setInd2(2);
+            this.SetFrame(this.getInd1(), this.getInd2());
+        };
+
+
+
+    }
 
     public void setJumpOk(boolean jumpOk) {
         this.jumpOk = jumpOk;
