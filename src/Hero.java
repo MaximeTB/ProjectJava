@@ -106,11 +106,11 @@ public class Hero extends animatedThings {
 
     public void update(long time, Foe ennemi) {
         delay = delay + 1;
-        if(shootDelay>0 && shootDelay<15){
+        if(shootDelay>0 && shootDelay<50){
             this.setInd1(3);
             shootDelay++;
         }
-        if(shootDelay==15){
+        if(shootDelay==50){
             this.setInd1(1);
             shootDelay=0;
             this.setShootOk(false);
