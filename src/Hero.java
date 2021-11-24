@@ -4,9 +4,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class Hero extends animatedThings {
-    private int delay;
+    private int delay,shootDelay=0;
     private boolean jumpOk;
-    private boolean fallOk;
+    private boolean fallOk, shootOk;
     private int countjump = 0;
     private int countfall = 0;
     private Rectangle2D hitbox;
@@ -14,7 +14,7 @@ public class Hero extends animatedThings {
     public Hero(int x, int y,int off) {
         super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, 0, 0, 0, off);
         delay = 0;
-
+        shootOk=false;
     }
 
     public void SetFrame(int x, int y) {
@@ -106,6 +106,15 @@ public class Hero extends animatedThings {
 
     public void update(long time, Foe ennemi) {
         delay = delay + 1;
+        if(shootDelay>0 && shootDelay<15){
+            this.setInd1(3);
+            shootDelay++;
+        }
+        if(shootDelay==15){
+            this.setInd1(1);
+            shootDelay=0;
+            this.setShootOk(false);
+        }
         this.setPx(this.getPx() + this.off); //vitesse hero
         this.getSprite().setX(this.getPx());
         hitbox=new Rectangle2D(this.getPx(),this.getPy(),this.getl(),this.geth());
@@ -118,7 +127,13 @@ public class Hero extends animatedThings {
 
     public void jump() {
         if (countjump <= 30 && isJumpOk()) {
-            this.setInd1(2);
+            if (this.shootOk){
+                this.setInd1(4);
+            }
+            else{
+                this.setInd1(2);
+            }
+
             this.setInd2(1);
             this.SetFrame(this.getInd1(), this.getInd2());
             this.setPy(this.getPy() - 8 + 0.2 * countjump);
@@ -137,7 +152,13 @@ public class Hero extends animatedThings {
     public void fall() {
 
         if(this.getPy()<260 && !isJumpOk()) {
-            this.setInd1(2);
+            if (this.shootOk){
+                this.setInd1(4);
+            };
+
+            if (this.shootOk==false){
+                this.setInd1(2);
+            };
             this.setInd2(2);
             this.SetFrame(this.getInd1(), this.getInd2());
             this.setPy(this.getPy() + 6 + 0.2 * countfall);
@@ -151,19 +172,26 @@ public class Hero extends animatedThings {
             this.sprite.setY(260);
             countfall=0;
             setFallOk(false);
+            this.setShootOk(false);
             this.setInd1(1);
             this.setInd2(1);
         }
     }
 
     public void shoot() {
+        this.setShootOk(true);
+        this.shootDelay++;
+        if(this.isJumpOk()==false && this.isFallOk()==false) {
+            this.setInd1(3);
+            this.SetFrame(this.getInd1(), this.getInd2());
+        };
         if(this.isJumpOk()==true){
             this.setInd1(4);
             this.setInd2(1);
             this.SetFrame(this.getInd1(), this.getInd2());
         };
         if(this.isFallOk()==true){
-            this.setInd1(4); 
+            this.setInd1(4);
             this.setInd2(2);
             this.SetFrame(this.getInd1(), this.getInd2());
         };
@@ -201,6 +229,13 @@ public class Hero extends animatedThings {
         pane.getChildren().add(this.getSprite());
     }
 
+    public boolean isShootOk() {
+        return shootOk;
+    }
+
+    public void setShootOk(boolean shootOk) {
+        this.shootOk = shootOk;
+    }
 }
 
 

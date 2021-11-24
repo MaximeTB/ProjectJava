@@ -143,6 +143,7 @@ public class GameScene extends Scene {
 
             if(hero.isJumpOk()){hero.jump();}
             if(hero.isFallOk()){ hero.fall();}
+            if(hero.isShootOk()){hero.shoot();}
 
             }
         };
