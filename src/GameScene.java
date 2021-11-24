@@ -24,7 +24,7 @@ public class GameScene extends Scene {
     private ArrayList<Heart> list_heart;
     private int nbLife;
     //fin de jeu
-    private boolean endgame=false,pause=false;
+    private boolean endgame=false,pause=true;
 
     AnimationTimer timer;
 
@@ -101,8 +101,7 @@ public class GameScene extends Scene {
 
             Foe deadEnnemi=null;
             boolean EnnemiIsDead=false;
-            if (!endgame){
-                hero.update(time,clan_alien.get(0));}
+            hero.update(time,clan_alien.get(0));
             for(Foe ennemi : clan_alien) {
                 ennemi.update(time, cam);
                 if (ennemi.isTouche()|ennemi.isFini()){
@@ -116,7 +115,7 @@ public class GameScene extends Scene {
                 lastPosition=clan_alien.get(0).getSprite().getY();
                 double r=Math.random();
                 System.out.println(r);
-                Foe newEnnemi=new Foe(lastPosition+r*800+1600,deadEnnemi.getPy(),pane,clan_alien,cam) ;
+                Foe newEnnemi=new Foe(cam.getX()+r*800+800,deadEnnemi.getPy(),pane,clan_alien,cam) ;
                 clan_alien.add(newEnnemi);
                 newEnnemi.getSprite().setX(newEnnemi.getPx());
                 if ((r-0.5)>0){
@@ -135,7 +134,9 @@ public class GameScene extends Scene {
                 endgame=true;
                 perdu.getImage().setX(33-pane.getLayoutX());
                 perdu.getImage().setY(10-pane.getLayoutY());
-                hero.ChangeSkin(pane,"tombe.png",0,0,206,206);
+                hero.ChangeSkin(hero.getPx(),270,pane,"tombe.png",0,0,206,206);
+                hero.getSprite().setFitWidth(100);hero.getSprite().setPreserveRatio(true);
+
             }
             updateGS(time,perdu);
 
@@ -145,7 +146,6 @@ public class GameScene extends Scene {
 
             }
         };
-        timer.start();
 
         /*this.setOnKeyTyped( (event)->{ //jump quand on presse la barre espace
             //System.out.println("Jump");
@@ -166,9 +166,14 @@ public class GameScene extends Scene {
                         timer.start();
                     }
                 }
-                if (t.getCode()==KeyCode.SPACE){
+
+                if (t.getCode()==KeyCode.UP){
                     if (hero.getPy()>259){
                         hero.setJumpOk(true);}
+                }
+                if (t.getCode()==KeyCode.SPACE){
+
+
                 }
             }
         });

@@ -177,12 +177,12 @@ public class Hero extends animatedThings {
         return hitbox;
     }
 
-    public void ChangeSkin(Pane pane, String filename, int cropX, int cropY, int l, int h){
+    public void ChangeSkin(double x,double y,Pane pane, String filename, int cropX, int cropY, int l, int h){
         pane.getChildren().remove(this.getSprite());
         this.sprite =  new ImageView(new Image(filename));
         this.setCropX(cropX);this.setCropY(cropY);this.setl(l);this.setH(h);
         this.sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),this.l,this.h));
-        this.sprite.setX(this.getPx());this.sprite.setY(this.getPy()-85);
+        this.sprite.setX(x);this.sprite.setY(y);
         pane.getChildren().add(this.getSprite());
     }
 
