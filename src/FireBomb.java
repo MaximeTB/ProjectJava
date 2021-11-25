@@ -19,7 +19,7 @@ public class FireBomb extends animatedThings {
         delay = 0;
 
     }
-    public void update(long time, Camera cam) {
+    public void update( Camera cam) {
             hitbox = new Rectangle2D(this.getPx()+20, this.getPy()+20, this.getl()-10, this.geth()-20);
 
             if(this.getPx()>0){

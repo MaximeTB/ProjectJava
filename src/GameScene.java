@@ -176,6 +176,7 @@ public class GameScene extends Scene {
                 }
                 if (t.getCode()==KeyCode.SPACE){
                     hero.shoot();
+                    bomb.update(cam); //modifié par elea pour firebomb
                 }
                 if (t.getCode()==KeyCode.RIGHT){
                     hero.setOff(hero.getOff()+2);
