@@ -19,8 +19,35 @@ public class FireBomb extends animatedThings {
         delay = 0;
 
     }
-    public void update(long time, Hero hero) {
-        delay = delay + 1;
+    public void update(long time, Camera cam) {
+            hitbox = new Rectangle2D(this.getPx()+20, this.getPy()+20, this.getl()-10, this.geth()-20);
+
+            if(this.getPx()>0){
+                delay = delay + 1;
+                if(speed_FireBomb<=1) {
+                    speed_FireBomb = speed_FireBomb + 0.001;
+                    this.setPx(this.getPx() - 10 * speed_FireBomb);
+                    this.getSprite().setX(this.getPx());
+                    count_FireBomb = this.getPx();
+                    if (delay == 3) {
+                        delay = 0;
+                    }
+                }
+                if(speed_FireBomb>1){
+                    this.setPx(this.getPx() - 10 * speed_FireBomb);
+                    this.getSprite().setX(this.getPx());
+                    //System.out.println(this.getPx());
+
+                }
+            }
+
+            if((this.getPx()<cam.getX()-50)) {
+                this.setFini(true);
+            /*this.setPx(this.getPx()+850);
+            this.getSprite().setX(this.getPx());*/
+
+            }
+
     }
     public Rectangle2D getHitbox() {
         return hitbox;
@@ -32,6 +59,21 @@ public class FireBomb extends animatedThings {
         this.sprite.setViewport(new Rectangle2D(this.getCropX(),this.getCropY(),this.l,this.h));
         this.sprite.setX(x);this.sprite.setY(y);
         pane.getChildren().add(this.getSprite());
+    }
+    public boolean isTouche() {
+        return touche;
+    }
+
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
+
+    public boolean isFini() {
+        return fini;
+    }
+
+    public void setTouche(boolean touche) {
+        this.touche = touche;
     }
 
 }
