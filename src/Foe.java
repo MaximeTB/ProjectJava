@@ -10,7 +10,7 @@ public class Foe extends animatedThings {
     static double speed_ennemi=0.1;
     private double count_ennemi=0;
     private Rectangle2D hitbox;
-    private boolean touche=false,fini=false;
+    private boolean fini=false;
     private Pane pane;
     private ArrayList<Foe> clan_ennemi;
 
@@ -22,7 +22,6 @@ public class Foe extends animatedThings {
         this.cam=cam;
     }
     public void update(long time,Camera cam) {
-        hitbox = new Rectangle2D(this.getPx()+20, this.getPy()+20, this.getl()-10, this.geth()-20);
 
         if(this.getPx()>0){
             delay = delay + 1;
@@ -41,12 +40,11 @@ public class Foe extends animatedThings {
                 //System.out.println(this.getPx());
 
             }
+        hitbox = new Rectangle2D(this.getPx()+20, this.getPy()+20, this.getl()-10, this.geth()-20);
         }
 
         if((this.getPx()<cam.getX()-50)) {
             this.setFini(true);
-            /*this.setPx(this.getPx()+850);
-            this.getSprite().setX(this.getPx());*/
 
         }
     }
@@ -62,9 +60,6 @@ public class Foe extends animatedThings {
         this.getSprite().setY(this.getPy());
     }
 
-    public boolean isTouche() {
-        return touche;
-    }
 
     public void setFini(boolean fini) {
         this.fini = fini;
@@ -74,9 +69,6 @@ public class Foe extends animatedThings {
         return fini;
     }
 
-    public void setTouche(boolean touche) {
-        this.touche = touche;
-    }
 
 }
 

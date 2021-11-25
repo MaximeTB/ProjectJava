@@ -5,17 +5,20 @@ import javafx.scene.layout.Pane;
 
 public class Hero extends animatedThings {
     private int delay,shootDelay=0;
-    private boolean jumpOk;
-    private boolean fallOk, shootOk;
+    private boolean jumpOk,SHOOT=false,fallOk, shootOk;
     private int countjump = 0;
     private int countfall = 0;
     private Rectangle2D hitbox;
+    private Pane pane;
+    private Camera cam;
 
-    public Hero(int x, int y,int off) {
+    public Hero(int x, int y,int off,boolean shooting,Pane pane) {
         super(x, y, "heros.png", 20, 8, 75, 100, 1, 1, 1, off);
         delay = 0;
         shootOk=false;
-    }
+        this.shootOk = shooting;
+        this.pane=pane;
+        }
 
     public void SetFrame(int x, int y) {
         this.ind1 = x;
@@ -103,6 +106,9 @@ public class Hero extends animatedThings {
         sprite.setViewport(new Rectangle2D(this.getCropX(), this.getCropY(), this.getl(), this.geth()));
     }
 
+    public void setCam(Camera cam) {
+        this.cam = cam;
+    }
 
     public void update(long time) {
         delay = delay + 1;
@@ -178,10 +184,15 @@ public class Hero extends animatedThings {
         }
     }
 
-    public void shoot() {
+    public void shoot(FireBomb bullet) {
         this.setShootOk(true);
         this.shootDelay++;
-        /*if(this.isJumpOk()==false && this.isFallOk()==false) {
+        this.SHOOT=true;
+
+
+
+
+        if(this.isJumpOk()==false && this.isFallOk()==false) {
             this.setInd1(3);
             this.SetFrame(this.getInd1(), this.getInd2());
         };
@@ -194,7 +205,7 @@ public class Hero extends animatedThings {
             this.setInd1(4);
             this.setInd2(2);
             this.SetFrame(this.getInd1(), this.getInd2());
-        };*/
+        };
     }
 
     public void setJumpOk(boolean jumpOk) {
@@ -232,6 +243,17 @@ public class Hero extends animatedThings {
 
     public void setShootOk(boolean shootOk) {
         this.shootOk = shootOk;
+    }
+
+    public void setShootDelay(int shootDelay) {
+        this.shootDelay = shootDelay;
+    }
+
+    public void setSHOOT(boolean SHOOT) {
+        this.SHOOT = SHOOT;
+    }
+    public boolean isSHOOT() {
+        return SHOOT;
     }
 }
 

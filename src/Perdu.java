@@ -42,7 +42,7 @@ public class Perdu extends staticThing {
                         this.pane.getChildren().remove(list_heart.get(nbLife).getImage());
                         list_heart.remove(nbLife);
 
-                        f.setTouche(true);
+                        f.setFini(true);
 
 
                         if (nbLife > 0) {

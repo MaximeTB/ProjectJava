@@ -13,9 +13,13 @@ import java.util.ArrayList;
 
 public class GameScene extends Scene {
     private double Score;
-    private Camera cam;
     private Pane pane;
-    private Hero hero = new Hero(100,260,5);
+
+    private boolean SHOOT=false,shootOk=false;
+
+    private Hero hero = new Hero(100,260,5,shootOk,pane);
+
+    private Camera cam = new Camera(0,0,hero);
     private BackGround bckgrndLeft,bckgrndRight;
     private Perdu perdu;
     //code afficher ennemi
@@ -26,19 +30,20 @@ public class GameScene extends Scene {
     private int nbLife;
     //fin de jeu
     private boolean endgame=false,pause=true;
-    private FireBomb bomb;
-
+    private FireBomb bullet;
     AnimationTimer timer;
+    private int cmptShoot=0;
+    private boolean shootReady=true;
 
 
     public GameScene(Pane pane,int v,int v1) {
         super(pane,v,v1,true);
         this.pane=pane;
+        hero.setCam(cam);
         int nbLife=3;
-        this.cam = new Camera(0,0,hero);
         this.clan_alien= new ArrayList<Foe>();
         this.list_heart=new ArrayList<Heart>();
-
+        bullet=new FireBomb(hero,pane,cam,false);
         pane.setLayoutX(cam.getX());
         pane.setLayoutY(cam.getY());
 
@@ -94,21 +99,53 @@ public class GameScene extends Scene {
         pane.getChildren().add(perdu.getImage());
 //afficher perdu
 
+
+
         timer = new AnimationTimer()
         {public void handle(long time){
 
+
+
             Foe deadEnnemi=null;
             boolean EnnemiIsDead=false;
+
+
             Score++;
             hero.update(time);
+            updateGS(time,perdu);
+            if(SHOOT){
+                bullet=new FireBomb(hero,pane,cam,true);
+                SHOOT=false;
+                shootReady=false;
+            }
+
+            if (shootOk){
+                bullet.update();
+                cmptShoot++;
+                if (cmptShoot>100){
+                    cmptShoot=0;
+                    shootReady=true;
+                }
+                for (Foe f: clan_alien){
+                    if(f.getHitbox()!=null) {
+                        if (f.getHitbox().intersects(bullet.getHitbox())) {
+                            f.setFini(true);
+                        }
+                    }
+                }
+            }
+
+            //Update des ennemis
             for(Foe ennemi : clan_alien) {
                 ennemi.update(time, cam);
-                if (ennemi.isTouche()|ennemi.isFini()){
+                if (ennemi.isFini()){
                     EnnemiIsDead=true;
                     deadEnnemi=ennemi;
                     pane.getChildren().remove(ennemi.getSprite());
                 }
             }
+
+            //Renouvellement des ennemis
             if(EnnemiIsDead){
                 clan_alien.remove(deadEnnemi);
                 double lastPosition=clan_alien.get(0).getPx();
@@ -126,8 +163,12 @@ public class GameScene extends Scene {
                 //newEnnemi.getSprite().setY(newEnnemi.getPy());
                 pane.getChildren().add(newEnnemi.getSprite());
             }
+
+
             cam.update(time);
             perdu.update(time,list_heart,nbLife);
+
+            //Game Over
             if(list_heart.size()==0){
                 /*perdu.GameOver(pane);*/
                 endgame=true;
@@ -138,28 +179,23 @@ public class GameScene extends Scene {
                 System.out.println(Score);
 
             }
-            updateGS(time,perdu);
 
 
+
+            //Jump
             if(hero.isJumpOk()){hero.jump();}
             if(hero.isFallOk()){ hero.fall();}
             if(hero.isShootOk()){
-                hero.shoot();
+                hero.shoot(bullet);
             }
-
             }
         };
 
-        /*this.setOnKeyTyped( (event)->{ //jump quand on presse la barre espace
-            //System.out.println("Jump");
-            if (hero.getPy()>259){
-                hero.setJumpOk(true);}
-
-        });*/
-
+        //Détection des touches
         this.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent t) {
+                //Pause
                 if (t.getCode()== KeyCode.P){
                     pause=!pause;
                     if (pause){
@@ -169,15 +205,21 @@ public class GameScene extends Scene {
                         timer.start();
                     }
                 }
-
+                //Jump
                 if (t.getCode()==KeyCode.UP){
                     if (hero.getPy()>259){
                         hero.setJumpOk(true);}
                 }
+                //Shoot
                 if (t.getCode()==KeyCode.SPACE){
-                    hero.shoot();
-                    bomb.update(cam); //modifié par elea pour firebomb
+                    if(shootReady) {
+                        SHOOT = true;
+                        shootOk = true;
+                        hero.shoot(bullet);
+                        //bomb.update(); //modifié par elea pour firebomb
+                    }
                 }
+                //Controle de la vitesse
                 if (t.getCode()==KeyCode.RIGHT){
                     hero.setOff(hero.getOff()+2);
                 }
@@ -208,5 +250,9 @@ public class GameScene extends Scene {
             this.bckgrndRight.setX(cam.getX()+795);
             this.bckgrndRight.getImage().setX(795+cam.getX());
         }
+
+        /*double position = cam.getX()%800;
+        bckgrndLeft.getImage().setX(0-position);
+        bckgrndRight.getImage().setX(800-position);*/
     }
 }
