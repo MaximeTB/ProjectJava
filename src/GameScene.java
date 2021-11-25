@@ -26,6 +26,7 @@ public class GameScene extends Scene {
     private int nbLife;
     //fin de jeu
     private boolean endgame=false,pause=true;
+    private FireBomb bomb;
 
     AnimationTimer timer;
 
@@ -142,7 +143,9 @@ public class GameScene extends Scene {
 
             if(hero.isJumpOk()){hero.jump();}
             if(hero.isFallOk()){ hero.fall();}
-            if(hero.isShootOk()){hero.shoot();}
+            if(hero.isShootOk()){
+                hero.shoot();
+            }
 
             }
         };
